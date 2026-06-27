@@ -16,6 +16,15 @@
 - 必须可独立测试（Red→Green→Refactor）。
 - 必须可独立回滚（提供 `Revert Command`）；纯文档 / 注释 Task 可填 `Revert Command: N/A (无副作用)`。
 
+**Replaces 语义强制移除**：
+
+凡 Task 的 `Relation to Existing` 声明 `Replaces EXIST-*`（替换既有元素），必须遵守：
+
+1. **Touches / Existing Touches 必须包含移除操作**：删除被替代文件 / 删除旧 import / 删除旧渲染引用 / 删除旧 CSS 规则。若被替代元素为代码片段（非整文件），则在 Touches 中注明"移除 `<旧符号 / 旧 JSX 块>` from `<文件路径>`"。
+2. **Verification Commands 必须包含不存在性检查**：`grep` / `Select-String` 确认旧符号/旧组件/旧 CSS 类不再被引用（被替代元素的标识符不出现在任何活跃源码中）。
+3. **若旧文件需保留为参考**：必须标注 `@deprecated` 注释（文件首行 + 原渲染引用处），并在 Reuse Notes 说明保留理由与预期清理时间。
+4. **反模式**：新建了替代组件（Replaces）但旧组件仍渲染 → 视为集成缺陷，Task 不得标 Done。
+
 **Task 头部必填字段**（22 项 · 本节为字段清单 · 字段定义见 `cross-cutting.md §4` / `appendix.md §A.*`）：
 
 `Phase / Type / Priority / Status / Implements / Depends On / Design Refs / Derived From / Relation to Existing / Touches / Existing Touches / Reuse Notes / Effort / Test Anchors（appendix.md §A.2）/ Verification Commands / Artifacts / Revert Command（appendix.md §A.3）/ Revert Conflict Risk（appendix.md §A.3）/ Anti-Invariants（appendix.md §A.5）/ Resume Strategy（appendix.md §A.6 条件化）/ Context Required Before Execution（appendix.md §A.5）/ Reflections（appendix.md §A.7，执行端写入）`。

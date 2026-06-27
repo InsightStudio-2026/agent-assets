@@ -23,6 +23,7 @@
 - [ ] `cross-cutting.md §5.3` Architectural Invariants 已列（INV-BAN-*/ INV-LIM-* 必须；INV-SEC-* 涉凭据 / 交易项目至少 1 条，否则在 §6 Out of Charter 明言"无 INV-SEC 适用"）
 - [ ] §0.5 Critical Assumptions Summary（charter 可填 N/A 但需说明原因）
 - [ ] `cross-cutting.md §2.1` Approval.Status = Acknowledged
+- [ ] **`stop-conditions.md §3` Out-of-Charter 反降级**：Out of Charter 中每条已核查——不存在上游 SSOT 明确要求但被静默排除的项；凡命中 Gate B 升级条件的项均附 Exclusion Justification + Gate B 标注
 - [ ] `forbidden-actions.md §Phase 1 校验` Format Validation Gate 通过
 - [ ] `forbidden-actions.md §Phase Exit Gate` 三件套通过（Format Gate PASS + self-check [x] + _status 已更新）
 
@@ -49,6 +50,7 @@
 - [ ] AC 主语为系统 / 服务 / 存储；行为可观察、不含模糊词
 - [ ] `cross-cutting.md §1.4-A` 每条 REQ 填 `Derived From` + `Relation to Existing`；Net New 附 Justification
 - [ ] `cross-cutting.md §1.4-B` 不复述 SSOT 已定义事实
+- [ ] **`stop-conditions.md §2` SSOT 覆盖率门禁**：charter Sources 表的每个 SRC-### 节均已核查——每条都有 ≥1 条 REQ 通过 Derived From 覆盖，或已在 charter Out of Charter 中排除并附 Justification
 - [ ] 主 workflow §2.3.3 Hybrid / Brownfield：`templates/requirements.md §5` Existing Coverage + `§8` Derivation Map；Seed / Greenfield 引用 maturity-intake Baseline / Greenfield Survey
 - [ ] `templates/requirements.md` Non-Goals 已写；未出现技术选型句
 - [ ] §0.5 Critical Assumptions Summary

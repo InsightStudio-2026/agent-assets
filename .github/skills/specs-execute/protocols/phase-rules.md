@@ -120,6 +120,15 @@
 - **超出两者并集且改变公共契约 / schema / API / UI 大版本 / 新外部依赖 / 跨 feature 范围** → 命中 Pause-and-Ask 或 Spec Breach，回切 `/specs-write` 把追加文件写进 Touches / Existing Touches、同时补 audit.md 中对应 EXIST-*。
 - **修改既有代码但未在 audit.md 中反向标识** → 若是同 Task 私有实现级补齐，先在 Execution Notes 留 `EXIST gap` 并继续；若影响公共契约或复用边界，回切 `/specs-write` 补 EXIST-*。
 
+### 3.1.1 Replaces 强制移除检查（对齐写端 `task-rules.md §1`）
+
+若本 Task 的 `Relation to Existing` 声明 `Replaces EXIST-*`：
+
+- [ ] 核查 Touches / Existing Touches 是否包含移除操作（删除被替代文件 / 删除旧 import / 删除旧渲染引用）
+- [ ] 核查被替代的旧符号/旧组件/旧 CSS 类是否在活跃源码中仍有引用 → `grep` / `Select-String` 全仓搜索旧标识符，命中结果必须为 0 或仅出现在 `@deprecated` 标记文件中
+- [ ] 若旧文件保留为参考 → 确认已标 `@deprecated` + Reuse Notes 已说明保留理由
+- [ ] 若遗漏移除 → **不可进入 Phase 4**，必须在 Plan 中把移除操作补入 Touches 并更新 Verification Commands（加不存在性 grep 检查）
+
 ### 3.2 Verification Commands 展开
 
 - 把 `Verification Commands` 抽象项展开为可执行命令（`pytest <path>` / `npm test` / drift 脚本 / 手工步骤）
