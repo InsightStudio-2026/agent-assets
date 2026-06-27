@@ -144,24 +144,3 @@
 | ------ | ------ | ------ | ------ |
 | safety-guard | PreToolUse | 拦截危险命令（rm -rf、DROP TABLE 等） | [safety-guard.json](.github/hooks/safety-guard.json) |
 | audit-log | PostToolUse | 记录工具执行审计日志 | [audit-log.json](.github/hooks/audit-log.json) |
-
-## 📖 官方文档参考 (VS Code Docs)
-
-> VS Code Agent Customization 官方文档的本地精要。原始页面已爬取保存。
-> ⚡ **2026-06-26 重生**：原 .github/workflows/ + .github/workflow-docs/ 已有机融入 .github/skills/。
-> 9 个核心过程为自动触发 Skill，15 个审计/运营 Skill 设 disable-model-invocation: true 手动调用。
->
-> **定位与访问边界**：这些 `.md` 是**只读参考**（reference），不是**行为契约**（instructions / skills）。它们不进 `.github/`、不参与 agent 自动加载，仅作为外部知识源存在。Agent 默认通过内置 `semantic_search` / `read_file` 按需检索；未来若迁移到 AgenticRAG（向量库 MCP / Context7 / 本地 FTS MCP），这些 `.md` 即成为索引源数据，目录路径稳定不变。
-
-| 文档 | 说明 | 路径 |
-| ------ | ------ | ------ |
-| README | 文档索引 + 项目适配对照 | [README.md](docs/reference/vscode-agent-customization/README.md) |
-| Overview | 八种定制类型 + 渐进采用 | [01-overview.md](docs/reference/vscode-agent-customization/01-overview.md) |
-| Custom Instructions | 指令系统完整参考 | [02-custom-instructions.md](docs/reference/vscode-agent-customization/02-custom-instructions.md) |
-| Agent Skills | 技能系统完整参考 | [03-agent-skills.md](docs/reference/vscode-agent-customization/03-agent-skills.md) |
-| Custom Agents | 智能体系统完整参考 | [04-custom-agents.md](docs/reference/vscode-agent-customization/04-custom-agents.md) |
-| Language Models | 模型系统完整参考 | [05-language-models.md](docs/reference/vscode-agent-customization/05-language-models.md) |
-| MCP Servers | MCP 系统完整参考 | [06-mcp-servers.md](docs/reference/vscode-agent-customization/06-mcp-servers.md) |
-| Hooks | 钩子系统完整参考 | [07-hooks.md](docs/reference/vscode-agent-customization/07-hooks.md) |
-| Agent Plugins | 插件系统完整参考 | [08-agent-plugins.md](docs/reference/vscode-agent-customization/08-agent-plugins.md) |
-| Prompt Files | 提示系统完整参考 | [09-prompt-files.md](docs/reference/vscode-agent-customization/09-prompt-files.md) |
