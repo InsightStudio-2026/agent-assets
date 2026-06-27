@@ -8,6 +8,8 @@
       "args": [
         "markdownlint-cli2",
         "**/*.md",
+        "!frontend/node_modules/**",
+        "!.venv/**",
         "!locales/**",
         "!tmp/**",
         "!reports/**"
