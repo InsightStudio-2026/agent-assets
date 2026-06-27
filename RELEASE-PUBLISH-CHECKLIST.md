@@ -22,8 +22,8 @@
 
 ### B. 资产完整性
 
-- [ ] **B1** `npx markdownlint-cli2 "**/*.md"` 全量通过（0 errors）
-- [ ] **B2** `pwsh -File .github/verify-completeness.ps1` 通过
+- [x] **B1** `npx markdownlint-cli2 "**/*.md"` 全量通过（0 errors）
+- [x] **B2** `pwsh -File .github/verify-completeness.ps1` 通过
 - [ ] **B3** `.github/skills/` 下每个 SKILL.md 都有合法的 YAML front matter（`name` + `description`）
 - [ ] **B4** `.github/instructions/` 下每个 instruction 都有合法的 YAML front matter（`name` + `description` + `applyTo`）
 - [ ] **B5** `.github/agents/` 下每个 agent 都有合法的 YAML front matter（`name` + `description` + `tools`）
