@@ -8,6 +8,29 @@ applyTo: '**/*.{test,spec}.{py,ts,tsx,js,jsx}'
 
 > 当任务涉及测试编写、测试策略或 TDD 流程时自动加载。本文档是任务完成门禁 (DoD) 的权威 SSOT。
 
+## 0. 微闭环自愈协议（Micro-Closed-Loop Self-Healing）
+
+> **铁律**：任何代码变更完成后，必须通过终端运行自动化验证套件并显式检查 `$LASTEXITCODE`。若 `$LASTEXITCODE` 非 0（即测试/构建/静态分析失败），禁止向人类请求帮助——你必须自行分析 stderr 与 traceback，并至少自我重试修正 3 轮。仅当连续 3 轮自我修正仍失败，或遇到需要底层架构决断的阻塞时，才能暂停并请求 Vibe 协同。
+
+### 0.1 执行-捕获-修正循环
+
+在任何 Python 后端逻辑或 C# 端点完成后，AI 必须：
+
+1. **生成对应的测试脚本**（或调用已有的测试套件）。
+2. **通过终端运行**测试并显式检查 `$LASTEXITCODE`——若该变量非 0，本次修改未完成。
+3. **禁止向人类请求帮助**：测试失败、构建失败、静态分析告警均不属于 Pause-and-Ask 白名单场景（详见 `@.github/instructions/rules.instructions.md#13-pause-and-ask-白名单收窄`）。
+4. **自主分析** stderr 与 traceback，定位根因后修正代码——不得以扩大 catch、吞错、重试、降级、兼容别名、特殊 case 叠加等方式治标。
+5. **至少自我重试 3 轮**，每轮必须变更策略（非机械重复同一修复）。
+6. **升级路径**：连续 3 轮仍失败后，触发 `/diagnose` 深度诊断而非直接求助用户；若诊断后判定需要架构决断（如 schema 契约变更、新依赖引入、跨模块重构），才暂停并请求 Vibe 协同。
+
+### 0.2 跨语言 DoD 命令
+
+- **Python**：`python -m pytest --tb=short` + `ruff check`
+- **TypeScript/JS**：`npx jest --no-coverage` + `npx eslint` + `npx tsc --noEmit`
+- **PowerShell**：`Invoke-ScriptAnalyzer -Path <file>` + 显式 `exit 0/1`
+
+任何 DoD 命令执行后必须读取输出，确认 0 错误 / 0 失败 / 0 告警，方可宣告完成。
+
 ## TDD 循环（不可跳步）
 
 1. **Red**：先写失败测试，确认测试确实失败

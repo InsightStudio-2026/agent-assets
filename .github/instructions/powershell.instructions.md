@@ -58,3 +58,44 @@ Invoke-ScriptAnalyzer -Path <文件路径>
 - **退出码**：明确设置 `exit 0`（成功）、`exit 1`（失败）、`exit 2`（安全拦截）。
 - **幂等性**：脚本应支持重复运行而不产生副作用。
 - **依赖声明**：顶部 `#Requires` 注释声明最低 PowerShell 版本和所需模块。
+
+## 4. 终端命令执行后自检（$LASTEXITCODE 审查）
+
+### 4.1 退出码检查纪律
+
+在执行任何外部命令（`python`、`pytest`、`npx`、`jest`、`eslint`、`tsc`、`ruff` 等）后，**必须**立即检查 `$LASTEXITCODE`：
+
+```powershell
+# 执行业务命令
+python -m pytest tests/ -v --tb=short
+
+# 立即自检——禁止跳过
+if ($LASTEXITCODE -ne 0) {
+    Write-Error "测试/构建失败，退出码: $LASTEXITCODE"
+    # 禁止 exit——必须自行分析 stderr/traceback 并修正
+}
+```
+
+### 4.2 纪律条款
+
+1. **非零退出码 = 未完工**：`$LASTEXITCODE` 非 0 时，不得宣告任务完成或向用户汇报"已做完"。
+2. **禁止跳过检查**：不得在运行命令后直接忽略 `$LASTEXITCODE` 继续下一步。
+3. **禁止向人类求助**：测试失败 / 构建失败 / 静态分析告警不命中 Pause-and-Ask 白名单，必须自我修正。
+4. **必须读取错误流**：捕获 stderr 与 stdout，分析 Traceback 后修正代码并重跑验证。
+5. **循环重试**：至少 3 轮自我修正，每轮变更策略；仅当连续失败或命中架构级阻塞才可暂停。
+
+### 4.3 自检模板
+
+```powershell
+$output = python -m pytest tests/ -v --tb=short 2>&1
+$exitCode = $LASTEXITCODE
+
+if ($exitCode -ne 0) {
+    $failures = $output | Select-String -Pattern "FAILED|ERROR|Traceback"
+    Write-Error "### 以下测试失败，自动进入自愈流程：`n$failures"
+    # 逐条分析失败原因，修正代码，重跑——直到全部通过
+}
+else {
+    Write-Output "### 全部通过，退出码: $exitCode"
+}
+```

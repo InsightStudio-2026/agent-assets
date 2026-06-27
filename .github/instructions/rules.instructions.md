@@ -206,6 +206,7 @@ applyTo: '**'
 - "加校验" → "为非法输入写测试，让测试通过"
 - "修这个 Bug" → "写一个能复现 Bug 的测试，让它通过"
 - "重构 X" → "确认重构前后测试都通过"
+- **测试失败 / 构建失败 / 静态分析告警均不命中 Pause-and-Ask 白名单**——禁止向人类求助，先执行微闭环自愈（至少 3 轮，每轮变更策略），仅当连续失败或触及架构决断时才暂停；详见 `@.github/instructions/test-driven.instructions.md#0-微闭环自愈协议micro-closed-loop-self-healing`
 
 多步任务必须先给出简明计划：
 
