@@ -1,0 +1,93 @@
+# NOTICE · 声明
+
+本文件遵循开源项目惯例，对本仓库的著作权主体、第三方资产来源与商标进行正式声明。
+本声明与 [`LICENSE`](./LICENSE) 共同构成本仓库的法律基础。
+
+---
+
+## 1. 著作权主体
+
+| 属性 | 值 |
+| ---- | ---- |
+| 著作权人 / 登记主体 | **海口秀英区洞悉人工智能应用软件工作室** |
+| 统一社会信用代码 | **92460000MAK66KH20N** |
+| 登记类型 | 个体工商户 / 工作室 |
+| 主营 | 人工智能应用软件开发 |
+| 适用许可 | MIT License（见 [`LICENSE`](./LICENSE)） |
+
+> **署名边界**：源码级 `Copyright` 注释与 `LICENSE` 文件只需写「海口秀英区洞悉人工智能应用软件工作室」简写；本 `NOTICE`、`README`、软件「关于页」及正式软著申请材料需保持主体名称与统一社会信用代码的完整呈现及严格一致。详见 [`.github/instructions/compliance.instructions.md`](./.github/instructions/compliance.instructions.md) §1。
+
+## 2. 第三方资产来源（Direct Vendor · 保留原协议）
+
+本仓库直接迁移整合了以下第三方资产，均保留原始 MIT 协议，并经用户明确批准。完整审计凭证见 [`/asset-quality-gates`](./.github/skills/asset-quality-gates/references/) 来源凭证目录。
+
+### 2.1 greensock/gsap-skills（GreenSock / Webflow）
+
+| 属性 | 值 |
+| ---- | ---- |
+| 来源 | [github.com/greensock/gsap-skills](https://github.com/greensock/gsap-skills) |
+| 原始协议 | MIT |
+| 引入模式 | 完整拷贝 + 本地化适配 |
+| 引入时间 | 2026-05-29 |
+| 用户批准 | 明确批准（原话：「直接搬迁，做好windsurf及本地适配化即可」） |
+| 凭证文件 | [`external-provenance-gsap-skills.md`](./.github/skills/asset-quality-gates/references/external-provenance-gsap-skills.md) |
+
+**已迁移的 8 个 skill**：
+
+- `gsap-core` · `gsap-timeline` · `gsap-scrolltrigger` · `gsap-plugins`
+- `gsap-utils` · `gsap-react` · `gsap-performance` · `gsap-frameworks`
+
+**本地适配**：每个 skill 添加中文译名与 AGENTS.md 索引登记，移除外部平台专属配置（`.claude-plugin` / `.cursor-plugin`）。
+
+> **GreenSock / GSAP 商标声明**：GSAP 与 GreenSock 是 GreenSock, Inc.（现属 Webflow）的商标。本仓库仅在 skill 名称与文档描述中合理引用该商标以指代其开源文档内容，不主张任何商标权利。
+
+## 3. 机制吸收（Mechanism Absorption · 非源码复制）
+
+下列工作流的**设计机制**吸收自外部 AI 工程资产仓库，经**机制参考重写**为中文协议。本仓库**不包含**这些项目的源代码。
+
+### 3.1 garrytan/gstack
+
+| 属性 | 值 |
+| ---- | ---- |
+| 来源 | [github.com/garrytan/gstack](https://github.com/garrytan/gstack) |
+| 引入模式 | 机制参考 + 功能覆盖重写 |
+| 凭证文件 | [`external-provenance-gstack-main.md`](./.github/skills/asset-quality-gates/references/external-provenance-gstack-main.md) |
+
+**已吸收的核心机制**：生命周期闭环、发布就绪度仪表盘、会话保存恢复、运行教训账本、浏览器 QA、安全审计与威胁建模、范围守卫、代码健康度、工程周期复盘、浏览器操作流固化、带所有权防线的提问控制。完整功能覆盖矩阵见凭证文件。
+
+**明确排除不导入**（安全 / 合规风险）：`/gstack-upgrade`（静默自更新）、`/setup-gbrain`（向量库守护进程）、`/setup-browser-cookies`（Cookie 解密）。
+
+## 4. 净室吸收设计哲学（Clean-room Philosophy · 无源码复制）
+
+下列项目的**设计哲学与目录约定**被净室吸收，本仓库无源码复制，亦无商标使用：
+
+- **VS Code Agent Customization 官方文档**（Microsoft）—— 接入点权威依据。
+- **Claude Code** / **Claude Design**（Anthropic）—— 「项目级 AI 协议文件」范式与「agentic coding with guardrails」理念。
+- **GitHub Spec Kit** / **gistdotdev spec-kit** —— 「需求 → 可执行合同」分解思想。
+
+> **VS Code、GitHub Copilot、Claude 商标声明**：VS Code 与 GitHub 是 Microsoft 的商标；Claude 是 Anthropic 的商标。本仓库仅在文档中合理引用这些商标以指代其产品，不主张任何商标权利，也不附属于上述公司。
+
+## 5. 方法论引用（概念引用 · 非内容复制）
+
+下列经典著作与思想的概念被引用于本仓库的 instructions / skills 中，均为思想引用而非内容复制。著作权归原作者所有：
+
+- **EARS Notation**（Alistair Mavin）
+- **Behavior-Driven Development**（Dan North）
+- **Test-Driven Development: By Example**（Kent Beck）
+- **Growing Object-Oriented Software, Guided by Tests**（Steve Freeman & Nat Pryce）
+- **Debugging: The 9 Indispensable Rules**（David J. Agans）
+- **The Pragmatic Programmer**（David Thomas & Andrew Hunt）
+- **DRI 文化**（Apple / Tesla 工程实践）
+- **Contributor Covenant**（社区行为准则，本仓库 [`CODE_OF_CONDUCT.md`](./CODE_OF_CONDUCT.md) 采用）
+
+## 6. AI 辅助开发声明
+
+本仓库在开发过程中使用了 AI 辅助工具（包括但不限于 GitHub Copilot、Claude）。根据 [`.github/instructions/compliance.instructions.md`](./.github/instructions/compliance.instructions.md) §2「人类作者性体现」原则：
+
+- **不伪造人工痕迹**：不故意加入低级玩笑、虚假 TODO、编造的修改历史。
+- **不隐藏辅助事实**：本声明即是对 AI 辅助事实的真实披露。
+- **人味的真正来源**：核心领域术语命名、架构级决策注释、回归测试案例、对母本的深刻把控，体现人类作者性。
+
+---
+
+**联系**：关于本声明的任何疑问，请通过 [GitHub Issues](../../issues) 联系维护者。

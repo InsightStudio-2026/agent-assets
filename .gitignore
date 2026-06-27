@@ -1,0 +1,16 @@
+# System Files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE temporary files (保留工作区配置入版本控制，仅忽略个人级缓存)
+.vscode/*.log
+.vscode/launch.*.local.json
+.idea/
+*.suo
+*.user
+
+# Agent temporary assets / caches / reports
+reports/
+tmp/
+cleanup_manifest_*.md
+locales/

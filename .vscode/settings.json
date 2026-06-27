@@ -1,0 +1,48 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.markdownlint": "explicit"
+  },
+  "github.copilot.chat.skillTool.enabled": true,
+  "chat.includeApplyingInstructions": true,
+  "chat.includeReferencedInstructions": true,
+  "chat.useAgentsMdFile": true,
+  "github.copilot.chat.reviewSelection.instructions": [
+    {
+      "text": "按 .github/instructions/code-review.instructions.md 的审查三维度（Standards/Spec/Verification）审查选中代码。"
+    },
+    {
+      "text": "高风险时追加 Risk Gates / Architecture / Operability / Authorship 四轴审查。"
+    }
+  ],
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "text": "按 .github/instructions/rules.instructions.md §5.2 Git 规范生成提交信息：中文标题 + 中英双语描述，原子粒度，不自动提交。"
+    }
+  ],
+  "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
+    {
+      "text": "按 .github/instructions/rules.instructions.md DoD 门禁 + .github/instructions/code-review.instructions.md 审查三维度（Standards/Spec/Verification）生成 PR 描述。"
+    }
+  ],
+  "markdownlint.run": "onType",
+  "markdownlint.focusMode": false,
+  "markdownlint.lintWorkspaceGlobs": [
+    "**/*.{md,mkd,mdwn,mdown,markdown,markdn,mdtxt,mdtext,workbook}",
+    "!**/node_modules",
+    "!**/.git",
+    "!**/vendor",
+    "!**/bower_components",
+    "!locales/**",
+    "!tmp/**",
+    "!reports/**"
+  ],
+
+  // ===== Autopilot / 工具放行配置 =====
+  // 本工作区内放行工具调用，关闭高级语义评估器（该层曾把 pip install 类依赖安装误判为高风险并拦截）。
+  // 灾难性兜底仍由 .github/hooks/safety-guard.json 的 5 类硬拦截保留（rm -rf / DROP / TRUNCATE / git push --force 等）。
+  "chat.permissions.default": "autopilot",
+  "chat.tools.autoApprove": true,
+  "chat.tools.global.autoApprove": true,
+  "chat.autopilot.advanced.enabled": false,
+  "markdown.validate.enabled": true
+}
