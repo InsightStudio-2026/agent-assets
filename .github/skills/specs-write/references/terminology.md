@@ -135,7 +135,7 @@
 | **Hybrid** | 本 spec 涉及领域内存在 ≥ 1 个既有模块 / 表 / 接口 / 路由 / UI 入口，同时有明显新建部分 | Feature-Scoped Full-Surface Audit | **必走** |
 | **Brownfield** | 本 spec 主要修改 / 替换 / 扩展既有模块、表、接口、数据流或历史行为 | Feature-Scoped Full-Surface Audit | **必走** |
 
--**判定证据要求**：仓库骨架 / 源代码 / DB schema / 测试 / docs SSOT / Project Archives / 历史 commit / 部署脚本，**最少六维信号**才能下 `Seed / Init` 或 `Greenfield` 判断；任一维存在真实负载 → 升级到 `Hybrid` / `Brownfield`。
+-**判定证据要求**：仓库骨架 / 源代码 / DB schema / 测试 / docs SSOT / `delivery-log.md`（交付台账） / 历史 commit / 部署脚本，**最少六维信号**才能下 `Seed / Init` 或 `Greenfield` 判断；任一维存在真实负载 → 升级到 `Hybrid` / `Brownfield`。
 
 - **机读 / 人读字段**：`handoff-payload.yaml` 中 `project_mode: Seed | Greenfield | Hybrid | Brownfield`（机读单值）+ `project_mode_label: "Seed / Init" | ...`（人读别名，保留 "Seed / Init" 复合标签作历史兼容）。
 - **反模式**：把项目当 Greenfield 跳 Phase 1.5 直接写 requirements / 用「当前为空」替代证据 / 没有六维信号就下 Seed 判断。
@@ -613,11 +613,11 @@
 - **`Verified By:` 4 项**：`tool` / `command_or_query` / `output_path` / `verified_at: <ISO 8601>`（7 天有效期重检）。
 - **源**：`appendix.md §A.4` + `templates/audit.md`。
 
-### 14.6 Project Archives 路径
+### 14.6 交付台账路径
 
-- **路径**：`docs/specs/project archives/工程交付归档-YYYY-MM-DD.md`。
-- **性质**：项目层归档；feature 交付时 AI 在交付 PR 中追加一条；只引用 reflection 概要 ID（如 `REF-001 · distilled_to_standards`），**不复制全文**。
-- **与 reflections-archive.md 区别**：reflections-archive 是 feature 内「实现旁注备忘」，不反流全局；Project Archives 是项目层交付事实。
+- **路径**：`docs/specs/project archives/delivery-log.md`。
+- **性质**：项目层交付台账（单一文件）；feature 交付时 AI 在交付 PR 中追加一行（feature-slug、归档日期、Task 数、状态、到 `done/<slug>/` 的链接）；**不复制 spec 全文**。
+- **与 done/ 区别**：`done/<slug>/` 是 feature 完整合同归档（charter/audit/design/requirements/tasks 等全部文件）；`delivery-log.md` 是项目级索引，仅一行摘要。
 - **源**：`appendix.md §A.7.4`。
 
 ---
@@ -734,7 +734,7 @@
 | Pending | §8.2 |
 | Preserve | §5.5 |
 | project-mode | §2.1 |
-| Project Archives | §14.6 |
+| 交付台账 (delivery-log.md) | §14.6 |
 | promoted_to_invariant | §10.2 + §15.3 |
 | promoted_to_ssot_patch | §10.2 + §15.3 |
 | REPORT_AND_STOP | §9.1-9.2 |

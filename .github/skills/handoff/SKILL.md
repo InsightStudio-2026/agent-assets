@@ -8,14 +8,14 @@ argument-hint: "下一次会话要继续什么工作？"
 
 ## 1. 定位
 
-Handoff 是**跨代理交接**——为一个全新代理（零上下文）提供最小必要信息以继续工作。它不是 `session-context`（同项目同代理恢复现场），不是 `tasks.md`（权威任务状态），不是 Project Archives（历史归档）。
+Handoff 是**跨代理交接**——为一个全新代理（零上下文）提供最小必要信息以继续工作。它不是 `session-context`（同项目同代理恢复现场），不是 `tasks.md`（权威任务状态），不是 `delivery-log.md` 或 `done/`（交付归档）。
 
 | 场景 | 用哪个 |
 | ------ | -------- |
 | 当前会话中断、下次自己继续 | `session-context` |
 | 交给另一个代理或另一个人 | **handoff** |
 | 项目级任务追踪 | `tasks.md` / spec |
-| 已完成工作归档 | Project Archives |
+| 已完成工作归档 | `delivery-log.md` + `done/` |
 
 ## 2. 存放规则
 

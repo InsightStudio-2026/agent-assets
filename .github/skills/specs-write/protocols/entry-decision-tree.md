@@ -95,7 +95,7 @@
 2. **源代码**：`src/` / `lib/` / `app/` 中是否有真实业务代码（非脚手架）
 3. **DB schema**：`migrations/` / `schema.sql` / `prisma/schema.prisma` / ORM models
 4. **测试**：`tests/` / `__tests__/` / `*_test.go` 是否有真实测试
-5. **docs SSOT**：`.github/instructions/` / `docs/specs/project archives/` / 母本文件
+5. **docs SSOT**：`.github/instructions/` / `docs/specs/done/` / `delivery-log.md` / 母本文件
 6. **历史 commit / 部署脚本**：`git log` / CI / Dockerfile / deploy 脚本
 
 ### 2.2 4 模式判定规则表（按顺序匹配，第一条命中即返回）
@@ -372,7 +372,7 @@ Phase 1.5 / Phase X 发现超出本 feature 范围的问题时，分流而**不*
 | ---- | ---------- | ------ | ------ | ---- |
 | R-CLOSEOUT-1 | 全 Task Status = Done，无 Blocked / Blocked(Suspended) 残留 | 进 Phase 9 Closeout 准备 | `/specs-execute:CLOSEOUT_READY` | kernel §5 + /specs-execute Phase 9 |
 | R-CLOSEOUT-2 | R-CLOSEOUT-1 + artifacts 与所有 Task 的 `Artifacts:` 声明一致（无遗漏 / 无外溢）+ 项目根 reports/tmp/output 无散落 | 继续准备 git mv | `/specs-execute:CLOSEOUT_READY` | kernel §5 |
-| R-CLOSEOUT-3 | R-CLOSEOUT-2 + `docs/specs/project archives/工程交付归档-YYYY-MM-DD.md` 加 feature 级交付归档条目 | 执行 git mv active/ → done/ | `/specs-execute:CLOSEOUT_DONE` | kernel §5 |
+| R-CLOSEOUT-3 | R-CLOSEOUT-2 + `docs/specs/project archives/delivery-log.md` 已追加本条 feature 交付记录 | 执行 git mv active/ → done/ | `/specs-execute:CLOSEOUT_DONE` | kernel §5 |
 | R-CLOSEOUT-4 | R-CLOSEOUT-1/2/3 任一未齐 | 拒绝 git mv，PR 拒合并 | `/specs-execute:CLOSEOUT_READY` 不变 | kernel §5 |
 
 ### 7.9 规则匹配总则
@@ -417,7 +417,7 @@ Phase 1.5 / Phase X 发现超出本 feature 范围的问题时，分流而**不*
 | 「这个 Schema migration 失败了」 | /specs-execute:BLOCKED 或 SPEC_REPAIR_REQUIRED | — | 看是 Migration 写错（spec 缺陷）还是环境问题 |
 | 「实现期发现项目级深度浅模块」 | /specs-execute:EXTERNAL_AUDIT_REQUIRED → /architecture-audit | — | 跨 feature 架构 |
 | 「写完 spec 了，下一步」 | /specs-execute TASK-001 | — | 进入执行端 |
-| 「全 Task Done 了，下一步」 | active → done 三条件齐 + git mv + Project Archives | — | 收尾 |
+| 「全 Task Done 了，下一步」 | active → done 三条件齐 + git mv + delivery-log.md 追加 | — | 收尾 |
 | 「上次 Task-002 中断了，怎么继续」 | /specs-execute Resume | — | 抢占恢复 |
 | 「想做新 feature 但发现 SSOT 不健康」 | 先走 /grill-with-docs 修 SSOT | — | SSOT Health 优先 |
 | 「想做 feature X 但用户没说清要什么」 | 必停澄清 ≤ 5 条 Open Questions | — | 防 5 注意力稀释 |

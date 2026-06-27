@@ -336,20 +336,20 @@ Phase 0 启动新 feature 前扫 `implementation_reflections.active`，命中以
 - `kind: implementation_choice` / `kind: reusable_pattern` → 任意 severity 软累计（reusable_pattern 裁决可 `resolution=distilled_to_standards`）。
 - `kind: test_modified` → 由 §A.2 hash 校验机械触发；归档前必检 `before_sha256` / `after_sha256` / `reason` 三字段齐备。
 
-### A.7.4 与 Project Archives 的关系（归档路径区别 · 含 active/done 迁移时机）
+### A.7.4 交付台账与合同归档的关系（归档路径区别 · 含 active/done 迁移时机）
 
 **active → done 迁移触发条件**（三条件齐 → 必走，由你在交付 PR 中执行 `git mv docs/specs/active/<feature-slug>/ docs/specs/done/<feature-slug>/`）：
 
 1. tasks.md `## 3. Task List` 所有 Task `Status = Done` 且无 `Blocked` / `Blocked(Suspended)` 残留；
 2. `<feature-slug>/artifacts/` 与所有 Task 的 `Artifacts:` 声明一致（无遗漏 / 无外溢；项目根 `reports/` / `tmp/` / `output/` 无散落产物，散落者按 cleanup_manifest 迁移）；
-3. `docs/specs/project archives/` 已加一条 feature 级交付归档条目（项目层 `docs/specs/project archives/工程交付归档-YYYY-MM-DD.md`）。
+3. `docs/specs/project archives/delivery-log.md` 已追加本条 feature 的交付记录。
 
 未齐三条件即迁移 → 视为越界，PR 拒合并。执行端 §9.2 在最后一条 Task Done 时呈交清单提醒用户。
 
 **归档路径区别**：
 
-- `reflections-archive.md` 位于 feature 内部（`docs/specs/active/<feature-slug>/reflections-archive.md` → 迁移后 `docs/specs/done/<feature-slug>/reflections-archive.md`）；与主 workflow §1.6 active/done 归档动线一致；**不进入 `docs/specs/project archives/`本体**。
-- `docs/specs/project archives/工程交付归档-YYYY-MM-DD.md` 只在项目交付事实部分**引用 reflection 概要 ID** （如 `REF-001 · distilled_to_standards`），不复制全文。
+- `reflections-archive.md` 位于 feature 内部（`docs/specs/active/<feature-slug>/reflections-archive.md` → 迁移后 `docs/specs/done/<feature-slug>/reflections-archive.md`）；与主 workflow §1.6 active/done 归档动线一致。
+- `docs/specs/project archives/delivery-log.md` 是项目层交付台账（单一文件），每完成一个 feature 追加一行摘要，**不复制 spec 全文**；只在交付事实部分引用 reflection 概要 ID（如 `REF-001 · distilled_to_standards`）。
 - 本 feature 的 `reflections-archive.md` 是该 feature 的「实现旁注备忘」，对其他 feature 不直接可见；**不反流为全局历史**。全局反流走 **INV-* 上升**（`charter.md §5`）或 **standards 蒸馏**（`.github/instructions/<主题>.md`）的正路。
 - 即：只有被裁决为 `promoted_to_invariant` 或 `distilled_to_standards` 的条目才进入项目级 SSOT 影响后续 feature。
 

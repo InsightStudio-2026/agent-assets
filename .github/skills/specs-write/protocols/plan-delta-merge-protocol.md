@@ -54,7 +54,7 @@
 | MB-R1 | Merge Queue | handoff-payload 中 implementation_reflections.active 可进入 merge-back queue | reflection 存活但无 resolution 候选 | 补 Reflections |
 | MB-R2 | Resolution 明确 | 每条候选 reflection 有 resolution、target、approval requirement | 只写“后续优化” | 拒绝 closeout |
 | MB-R3 | Authoritative Boundary | folded_into_ssot / promoted_to_ssot_patch 未获批准前只写候选 | 静默改母本 / L1 SSOT | Gate A/B |
-| MB-R4 | Archive Separation | feature 内 reflections-archive 不反流全局；Project Archives 只引用概要 | 归档内容反向成为新事实源 | 纠正归档 |
+| MB-R4 | Archive Separation | feature 内 reflections-archive 不反流全局；delivery-log.md 只引用概要 | 归档内容反向成为新事实源 | 纠正归档 |
 | MB-R5 | Active Cleanup | 已裁决 reflection 同 PR 从 YAML 物理删除并追加 archive | 只改 status 或 YAML/archive 同 ID 重复 | 回滚 GC |
 | MB-R6 | Next Feature Preflight | 下一轮 Phase 0 先扫未裁决 high / medium+ reflection | 带阻塞反流继续开新 feature | BLOCKED |
 
@@ -80,4 +80,4 @@
 | 不用 plan artifact 绕过 `artifacts/` 路径 | 执行期副产物必须落 spec artifacts |
 | 不把兼容层写成 Preserve | 兼容层是迁移窗口，必须有退出条件 |
 | 不静默回并 Authoritative SSOT | folded_into_ssot / promoted_to_ssot_patch 必须用户批准 |
-| 不把 Project Archives 当新 SSOT | 归档只读，不反流 |
+| 不把 delivery-log.md / done/ 当新 SSOT | 归档只读，不反流 |

@@ -4,7 +4,7 @@
 
 ## Phase 0 判定硬规则（落 spec 前必读）
 
-- **Project Maturity 必先查**：仓库骨架 / 源代码 / DB schema / 测试 / docs SSOT / Project Archives / 历史 commit / 部署脚本，最少六维信号才能下 `Seed / Init` 或 `Greenfield` 判断；任一维存在真实负载 → 升级到 `Hybrid` / `Brownfield`。
+- **Project Maturity 必先查**：仓库骨架 / 源代码 / DB schema / 测试 / docs SSOT / `delivery-log.md`（交付台账） / 历史 commit / 部署脚本，最少六维信号才能下 `Seed / Init` 或 `Greenfield` 判断；任一维存在真实负载 → 升级到 `Hybrid` / `Brownfield`。
 - **模式判定**：
   - `Seed / Init`：仓库 / spec / 代码 / DB / 测试 / 归档基本为空，且当前任务是建立项目骨架 / 初始 SSOT / 第一批基础设施。
   - `Greenfield`：与既有系统物理隔离，但项目已有 README / .github/standards / CI / 测试约束 / 技术红线 / 母本 SSOT；Greenfield 不是"无现状"，必须审项目基础设施、共享规范、SSOT、测试 / CI、数据策略槽位。

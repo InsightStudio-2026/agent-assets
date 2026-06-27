@@ -25,7 +25,7 @@ description: "全局统一的全景现状审计准则（14-Surface Full-Spectrum
 | 面 | 属性 | 核心核验法则 (Verification Checklist) | 预期 Evidence 输出范例 | 深挖与阻断法则 (Drill-down & Block) |
 | ---- | ------ | --------------------------------------- | ------------------------ | ------------------------------------- |
 | **1. 文档 SSOT 面** | `[强证据]` | 1. 精读 L1 SSOT 和 active/done specs。<br/>2. 验证当前用户需求与已有母本的方向一致性。<br/>3. 检查是否有架构决策记录 (ADR) 作为依据。 | `audit-evidence/ssot_survey.txt` | 若母本严重不健康或缺失，立即触发 `BLOCKED_SSOT_REPAIR` 阻断全域审计，路由回 `/project-steward` 或 `/project-inception`。 |
-| **2. 历史面** | 基础 | 1. 扫描 Project Archives 归档历史。`<br/>`2. 识别曾被废弃或回滚的技术方案。<br/>3. 审查旧任务中的遗留 TODO 或已知缺陷。 | `audit-evidence/history.txt` | 发现旧废弃方案与当前计划重合时，标记为极高风险，必须追问放弃原因。 |
+| **2. 历史面** | 基础 | 1. 扫描 `docs/specs/done/` 和 `delivery-log.md` 交付历史。`<br/>`2. 识别曾被废弃或回滚的技术方案。<br/>3. 审查旧任务中的遗留 TODO 或已知缺陷。 | `audit-evidence/history.txt` | 发现旧废弃方案与当前计划重合时，标记为极高风险，必须追问放弃原因。 |
 
 ### 第二阶：底层事实 (The Foundation)
 

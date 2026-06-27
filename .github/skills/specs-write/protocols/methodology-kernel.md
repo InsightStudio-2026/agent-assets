@@ -111,7 +111,7 @@ NFR 字段详细模板与槽位结构详 `templates/requirements.md §10`；conf
 | 4 | **Deprecate** | charter `## 6. Out of Charter` 显式登记 + 新 spec 中 `Replaces EXIST-*` 路径 + `audit.md ## 11. Audit Refresh Log` 追加 deprecate 行 | 弃用某既有能力 / EXIST-*但本 feature 不立即替换 | 弃用范围 + 兼容窗口（owner / 删除条件 / 验证方式 / 清理 task） |
 | 5 | **Preserve** | `Relation to Existing: Depends EXIST-*` | 依赖既有不动 | EXIST-* 锚点 + 不动理由 |
 | 6 | **Merge Back** | Reflection `resolution ∈ {promoted_to_invariant, distilled_to_standards, folded_into_spec, folded_into_ssot, promoted_to_ssot_patch}`（appendix §A.7.2） | 实现期发现可升入 charter §5 / .github/standards / 母本的稳定模式 | reflection ID + resolution + target 真实落点 + 用户批准（仅 folded_into_ssot / promoted_to_ssot_patch 必需） |
-| 7 | **Archive Only** | active → done `git mv` + `reflections-archive.md` append-only（appendix §A.7.4） | 交付后归档但不反流全局 | feature 三条件齐 + Project Archives 条目 |
+| 7 | **Archive Only** | active → done `git mv` + `reflections-archive.md` append-only（appendix §A.7.4） | 交付后归档但不反流全局 | feature 三条件齐 + `delivery-log.md` 条目 |
 
 **Conflicts EXIST-*** 不是独立 delta，而是 Modify / Replace / Deprecate 的**未决前置态**：
 `Conflicts` 必须有解决方向，不得只罗列矛盾；解决后落到上面 7 种之一。
@@ -137,7 +137,7 @@ NFR 字段详细模板与槽位结构详 `templates/requirements.md §10`；conf
 
 1. `tasks.md ## 3. Task List` 所有 Task `Status = Done`，无 `Blocked` / `Blocked(Suspended)` 残留。
 2. `<feature-slug>/artifacts/` 与所有 Task 的 `Artifacts:` 声明一致（无遗漏 / 无外溢）；项目根 `reports/` / `tmp/` / `output/` 无散落产物（散落者按 `cleanup_manifest_<date>.md` 迁移）。
-3. `docs/specs/project archives/工程交付归档-YYYY-MM-DD.md` 已加 feature 级交付归档条目。
+3. `docs/specs/project archives/delivery-log.md` 已追加本条 feature 的交付记录。
 
 未齐三条件即迁移 → 视为越界，PR 拒合并。执行端 `/specs-execute` Phase 9 在最后一条 Task Done 时呈交清单提醒用户。
 
@@ -173,7 +173,7 @@ NFR 字段详细模板与槽位结构详 `templates/requirements.md §10`；conf
 
 - **同 PR 物理删除 + 追加**：Reflection 裁决归档时，必须**同 PR 从 YAML 物理删除**已裁决条目（不是改状态位），同 PR 在 `reflections-archive.md` 追加同等条目。仅变状态位 = GC 失职。
 - **YAML 与 archive 不得同 ID 重复**：出现同 reflection-id 重复 → 视为 GC 失职，回滚 PR。
-- **`Project Archives` ≠ `reflections-archive.md`**：`docs/specs/project archives/工程交付归档-YYYY-MM-DD.md` 只在项目交付事实部分**引用 reflection 概要 ID**（如 `REF-001 · distilled_to_standards`），不复制全文。
+- **`delivery-log.md` ≠ `reflections-archive.md`**：`docs/specs/project archives/delivery-log.md` 是项目层交付台账（每 feature 一行），只在交付事实部分**引用 reflection 概要 ID**（如 `REF-001 · distilled_to_standards`），不复制全文。
 
 ---
 

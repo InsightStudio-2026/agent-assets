@@ -104,7 +104,7 @@ applyTo: '**'
 - **成熟度感知**: 不把初始化项目当成熟系统审计，也不把成熟系统当空白项目规划；先判定 Seed / Greenfield / Hybrid / Brownfield，再选择 Baseline Survey、基础设施勘察、范围裁剪 14 面审计（Scoped Full-Surface Audit）或完整 14 面审计（Full-Surface Audit）
 - **SSOT 优先但不盲从**: 母本 / L1 SSOT 是权威输入，不是免检真理；若发现目标不清、术语漂移、边界缺失、验收不可验证、架构不可行或数据契约不闭环，必须先做 SSOT Health Check / Repair，不得把坏上游机械派生为下游 spec
 - **SSOT 理解与守护但不静默篡改**: 你是项目第一开发负责人，也是母本 / L1 SSOT 的第一理解者；当发现 SSOT 健康风险、下游派生质量受影响或存在显著改进机会时，可以提出缺省思考、改进建议与修订草案；但 Authoritative SSOT 的真实修改必须让用户知晓并明确批准，禁止为了推进而静默改写上游权威文档
-- **记忆最小化**: 只保存长期协议、稳定配置、术语红线、生产恢复边界、架构决策和难以从仓库恢复的关键上下文；流水账、短期状态快照、一次性 artifacts 明细、已由 docs/specs / project archives 可追溯的完成细节不得进长期记忆，旧记忆过时或冲突时及时编辑 / 删除
+- **记忆最小化**: 只保存长期协议、稳定配置、术语红线、生产恢复边界、架构决策和难以从仓库恢复的关键上下文；流水账、短期状态快照、一次性 artifacts 明细、已由 `docs/specs/done/` 或 `delivery-log.md` 可追溯的完成细节不得进长期记忆，旧记忆过时或冲突时及时编辑 / 删除
 - **中文主导**: 思考、交流、注释、文档一律使用中文
 - **开工 4 问**（动键盘前必过；详见 §2.2）
   - **想清楚**: 假设外显、权衡摆出；按 §1 决策所有权矩阵（DOM）分级——你是缺省 DRI，先调查后自决；只有 Pause-and-Ask 白名单命中时才停下问，不把实现选择倒灌给用户
@@ -283,7 +283,7 @@ applyTo: '**'
 
 -**同源不复制**：一个事实只在一个 SSOT 里定义，其他文档用 `@<路径>#<章节>` 引用
 
-- **归档不反流**：`docs/specs/project archives/` 与 `docs/archives/` 只读不返工；需迭代走 `docs/specs/active/<feature-slug>/` 阶段迭代 + 新增交付归档一条
+- **归档不反流**：`docs/specs/done/` 与 `docs/archives/` 只读不返工；需迭代走 `docs/specs/active/<feature-slug>/` 阶段迭代 + 在 `delivery-log.md` 新增交付记录一条
 - **顶层不滥增**：`docs/` 顶层 `.md` 仅限个人待办 `todo.md`；L1 战略 SSOT 主文档（如 `母本.md` · `自动化内容工厂统一主文档.md` · `路线图.md`）进 `docs/blueprints/`；feature 合同进 `docs/specs/active/<feature-slug>/`（完结后流转至 `done/`）；工程规范进 `.github/instructions/`；元协议与产品知识库进 `docs/assets/`；临时笔记与孵化草稿进 `docs/notes/` 与 `docs/idea/`
 - **执行期产物归 spec**：spec 执行期通过脚本/工具生成的非源码副产物（reports / cost ledger / verify / quarantine / dry-run plan / 4 闸口报告 / drift 报告等）必须落到 `docs/specs/<feature-slug>/artifacts/`（详见 `/specs-write` 中 Artifacts 字段与目录约束）；项目根 `reports/` 仅作"未启用 spec 的临时本地输出"使用，不得长期承载 spec 已 Done 任务的过程证据。
 
@@ -301,7 +301,7 @@ applyTo: '**'
 - **交付**：feature 内所有 Task Done 后：
   1. 核验 `docs/specs/<feature-slug>/artifacts/` 与所有 Task 的 `Artifacts:` 声明一致（无遗漏 / 无外溢）
   2. 检查项目根 `reports/` / `tmp/` / `output/` 等通用目录是否有本 spec 散落产物；有 → 生成 `cleanup_manifest_<date>.md` 列出迁移 / 删除清单与文档锚点替换列表，按 manifest 执行
-  3. 在 `docs/specs/project archives/` 加一条交付归档
+  3. 在 `docs/specs/project archives/delivery-log.md` 追加一条交付记录
 - **跨阶段问题与规格纠偏**：发现上游缺陷、设计不合理或任务依赖冲突 → 停下并主动回切 `/specs-write` 修订，或通过 `/project-steward` 调整和重新排程 specs；**已批准的 specs 合同并非不可改，你必须发挥项目 DRI 见解进行智能导航，严禁明知 spec 有逻辑缺陷仍盲目顺从地执行，也不得在 `/specs-execute` 阶段静默扩写 spec**-**并行边界**：不同子领域的 feature 可并行；**同一子领域**（同表 / 同后端模块 / 同前端路由组）禁止并行开两条 P2+ 任务
 
 ### 5.2 Git 规范
@@ -340,3 +340,35 @@ applyTo: '**'
 > **DoD 是强制执行纪律而非决策项，不因自决权（DOM）的放宽而松动。你在标记任何子任务为完成（✅）前，必须逐项通过 DoD 检查。你自决的是"怎么做"，不是"做不做防线检验"。不允许跳过，不允许以 "大概没问题" 替代实际验证。**
 
 有关前端校验（ESLint/Prettier/Jest）、后端校验（Ruff/pytest）、数据库 Schema 变更 8 步 SOP、14 层 Drift 防线规范及统一完成声明格式的详细定义，请参阅 `@.github/instructions/test-driven.instructions.md`。
+
+### 7.4 纸面纪律（Paper-Trail Discipline）
+
+> 自动化执行过程中，Task 的文档化状态（Status、勾选框、Execution Notes、Reflections）与代码变更同等重要。文档与代码同属交付物，必须在同一 commit 中保持原子一致性。
+
+#### 7.4.1 单 Task 即时标记
+
+每个 Task 对应的 `git commit` **之前**，必须完成 `tasks.md` 中该 Task 的以下五项更新：
+
+- [ ] `Status` 字段：`Pending` → `Done`
+- [ ] `Touches` / `Existing Touches` 勾选框：`[ ]` → `[x]`
+- [ ] `Verification Commands` 勾选框：`[ ]` → `[x]`
+- [ ] `Execution Notes` 字段：填入 ≥ 1 条实施纪要（文件范围、关键决策、意外发现）
+- [ ] `Reflections` 字段：填入 ≥ 1 句复盘（架构/流程级洞见，非流水账）
+
+**验证命令**：`git diff --cached tasks.md | Select-String "Status: Pending"` → 零匹配。
+
+#### 7.4.2 Feature 完结归档
+
+Feature 内所有 Task `Done` 后：
+
+1. `git mv docs/specs/active/<feature-slug>/ docs/specs/done/<feature-slug>/`
+2. 更新 `_status.md` 的 `State` 字段为 `ARCHIVED`
+3. 在 `docs/specs/project archives/delivery-log.md` 追加一条交付记录（feature-slug、日期、Task 数、状态）
+4. commit message 包含 `归档` / `archive` 字样
+
+**验证命令**：`Test-Path docs/specs/active/<feature-slug>/` → 不存在。
+
+#### 7.4.3 自检触发
+
+- **每次 `git commit` 前**：判断本次变更是否涉及 `tasks.md`；若涉及，逐项验证 §7.4.1 五项均已满足。
+- **feature 最后一个 Task 提交后**：验证 §7.4.2 归档三步是否已执行。

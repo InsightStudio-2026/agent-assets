@@ -94,7 +94,7 @@ argument-hint: "要做什么功能？"
 - `done/<feature-slug>/`：完结后归仓。
 - **完结条件**：
   1. `tasks.md` 内全 Task 标为 `Done`。
-  2. `docs/specs/project archives/` 内存在对应的交付归档。
+  2. `docs/specs/project archives/delivery-log.md` 内已追加本条 feature 的交付记录。
   3. `handoff-payload.yaml` 状态标为 `status: Acknowledged`。
   - 满足条件后使用 `git mv` 移动并更新全仓所有跨文档引用。
 - **`artifacts/` 子目录硬约束**：spec 执行期任何 Task 产生的非源码副产物（plan / verify / cost ledger / quarantine / dry-run / 4 闸口报告 / drift 报告）必写入本目录或子目录，禁项目根 `reports/` / `tmp/` / `output/`。

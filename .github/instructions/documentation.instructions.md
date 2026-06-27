@@ -17,8 +17,9 @@ applyTo: '**/*.md'
 | 层级 | 路径 | 职责 |
 | ---- | ---- | ---- |
 | L1 | `docs/blueprints/` | 母本、路线图、主文档 |
-| L2 | `docs/specs/active/<feature-slug>/` | Feature spec 合同 |
-| L3 | `docs/specs/project archives/` | 已完成 feature 交付归档 |
+| L2 | `docs/specs/active/<feature-slug>/` | Feature spec 合同（进行中） |
+| L3 | `docs/specs/done/<feature-slug>/` | Feature 合同归档（完结后 `git mv` 至此） |
+| — | `docs/specs/project archives/delivery-log.md` | 工程交付台账（每完成一个 feature 追加一行） |
 | — | `docs/todo.md` | 个人待办 |
 | — | `docs/notes/` | 零散开发笔记 |
 | — | `docs/idea/` | 想法孵化草稿 |
@@ -31,15 +32,15 @@ applyTo: '**/*.md'
 - **子目录名**：小写英文（`blueprints/`、`specs/`、`archives/`、`assets/`、`notes/`、`idea/`）
 - **内容文档名**：优先中文；feature-slug 用 kebab-case、不含日期；文件名不含空格，用 `-` 分隔
 - **同源不复制**：一个事实只在一个 SSOT 里定义，其他文档用相对路径 + 锚点引用
-- **归档不反流**：`project archives/` 与 `archives/` 的内容不得被"返工"
+- **归档不反流**：`docs/specs/done/` 与 `docs/archives/` 的内容不得被"返工"；需迭代走 `docs/specs/active/<feature-slug>/` 阶段迭代 + 新增交付记录一条
 - **顶层不滥增**：`docs/` 顶层 `.md` 仅限 `todo.md`；新需求进 `docs/specs/active/<feature-slug>/`；L1 主文档进 `docs/blueprints/`；工程规范进 `.github/instructions/`；元协议/产品知识库进 `docs/assets/`
-- **active → done 单向流转**：feature 完结后 `git mv` 到 `done/`，同步刷新跨文档引用
+- **active → done 单向流转**：feature 完结后 `git mv` 到 `done/`，同步刷新跨文档引用；同时在 `docs/specs/project archives/delivery-log.md` 追加一条交付记录
 
 ### 1.3 新增文档决策流
 
 1. **L1 SSOT？** → `docs/blueprints/`
 2. **Feature 合同？** → `/specs-write` → `docs/specs/active/<slug>/`
-3. **交付证据？** → `docs/specs/project archives/`
+3. **Feature 完结归档？** → `git mv` 到 `docs/specs/done/<slug>/` + 在 `docs/specs/project archives/delivery-log.md` 追加交付记录
 4. **工程规范？** → `.github/instructions/`
 5. **元规则/法律政策？** → `docs/assets/`
 6. **历史快照？** → `docs/archives/`（只读）

@@ -257,7 +257,7 @@ Status：全 Verification PASS + 无 Pause-and-Ask 未决 → `Done`；部分失
 
 ```
 
-**全 Task Done 交付收尾**：核验 `<feature-slug>/artifacts/` 与所有 `Artifacts:` 声明一致（无遗漏 / 无外溢）→ 项目根 `reports/` / `tmp/` 等无散落（散落 → 生成 `cleanup_manifest_<date>.md`）→ **自动刷新并验证 Frontmatter 物理完整性**（运行 `powershell -ExecutionPolicy Bypass -File .\verify-completeness.ps1 -Update` 以自动对齐物理统计，若有报错则拒绝收尾）→ 按项目规范产交付归档 → **active → done 物理迁移**（三条件齐：所有 Status=Done + Artifacts 核验 PASS + Project Archives 已加条目 → 交付 PR 中 `git mv docs/specs/active/<slug>/ docs/specs/done/<slug>/`；未齐 → PR 拒合并）→ `/specs-execute:CLOSEOUT_DONE`。Spec 缺陷 → 提示回切 `/specs-write`。
+**全 Task Done 交付收尾**：核验 `<feature-slug>/artifacts/` 与所有 `Artifacts:` 声明一致（无遗漏 / 无外溢）→ 项目根 `reports/` / `tmp/` 等无散落（散落 → 生成 `cleanup_manifest_<date>.md`）→ **自动刷新并验证 Frontmatter 物理完整性**（运行 `powershell -ExecutionPolicy Bypass -File .\verify-completeness.ps1 -Update` 以自动对齐物理统计，若有报错则拒绝收尾）→ **active → done 物理迁移**（三条件齐：所有 Status=Done + Artifacts 核验 PASS + delivery-log.md 已追加记录 → 交付 PR 中 `git mv docs/specs/active/<slug>/ docs/specs/done/<slug>/`；未齐 → PR 拒合并）→ `/specs-execute:CLOSEOUT_DONE`。Spec 缺陷 → 提示回切 `/specs-write`。
 
 ---
 

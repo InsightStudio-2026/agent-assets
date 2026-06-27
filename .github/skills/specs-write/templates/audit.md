@@ -13,7 +13,7 @@
 - **禁止审计偷懒**：禁止把 grep 命中当审计完成；禁止只读 1–2 个文件即进入 design；禁止用"看起来是"写 EXIST-*；禁止未验证真实 DB / API / UI / FS 状态就写成事实；禁止省略 unknowns。
 - **细项不得折叠**：Audit Coverage Matrix 每一面都必须在对应 evidence_file 中逐项列出"已查 / N/A / 未决"状态；不得只写"已扫描"、"已核对"、"无问题"等总括词。
 - **Audit Depth Gate 双层门**：进入 Phase 2 前必须同时满足：14 面均有覆盖判定；真实数据库面与文档 SSOT 面不可 N/A；Overall Confidence ≥ 80%；真实数据库面 / 文档 SSOT 面各自 confidence ≥ 80%；所有 Unknowns 要么清零，要么写明不影响 Phase 2 的理由与后续验证点。任一不达标 = `BLOCKED_AUDIT_DEBT`。
-- **强制真实工具**：数据库面必须用 PostgreSQL MCP / SQLite MCP 或等价工具 readback 真实 schema、约束、索引、行数与示例行；文档 SSOT 面必须深读 L1 SSOT、`.github/instructions/`、active / done specs、Project Archives、artifacts，不得只用关键词 grep。
+- **强制真实工具**：数据库面必须用 PostgreSQL MCP / SQLite MCP 或等价工具 readback 真实 schema、约束、索引、行数与示例行；文档 SSOT 面必须深读 L1 SSOT、`.github/instructions/`、active / done specs、`delivery-log.md`、artifacts，不得只用关键词 grep。
 - **质量优先**：Phase 1.5 中 AI-DRI 优先保证审计质量；不得为节省时间跳读；未通过 Audit Depth Gate 不得 AI-DRI 自动批准。
 
 ## Spec Derivation Audit — `<Feature Name>`
@@ -121,7 +121,7 @@ Audit Depth Gate:
 | ------------- | ------ | ------------------ | ------ | ---------------- |
 | `.github/instructions/<file>.md` | §`<n>` | 数据契约 | 引用，不复述 | none |
 | `docs/specs/done/<feature>/...` | §`<n>` | 历史实现 | 复用 EXIST-* | none |
-| `docs/specs/project archives/<file>.md` | Part `<x>` | 交付事实 | 约束新方案 | Gap-1 |
+| `docs/specs/project archives/delivery-log.md` | Line `<n>` | 交付事实 | 约束新方案 | Gap-1 |
 
 ## 9. Critical Assumptions Summary
 

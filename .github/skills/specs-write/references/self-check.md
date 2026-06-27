@@ -12,6 +12,8 @@
 - [ ] `cross-cutting.md §2.2` Blocking Issues 已分 Gate A / Gate B / N/A，命中项给强推荐 + ≤ 2 备选 + 代价
 - [ ] §0.5 Critical Assumptions Summary（`templates/maturity-intake.md §6.5`；maturity-intake 可 N/A 但需说明原因）
 - [ ] `cross-cutting.md §2.3` Decision = PROCEED_TO_CHARTER 时 Approval 留痕（用户 Gate 批准原话或 AI-DRI auto-approved）
+- [ ] `forbidden-actions.md §Phase 0 校验` Format Validation Gate 通过
+- [ ] `forbidden-actions.md §Phase Exit Gate` 三件套通过（Format Gate PASS + self-check [x] + _status 已创建/更新）
 
 ## 2. Charter 自检
 
@@ -21,17 +23,21 @@
 - [ ] `cross-cutting.md §5.3` Architectural Invariants 已列（INV-BAN-*/ INV-LIM-* 必须；INV-SEC-* 涉凭据 / 交易项目至少 1 条，否则在 §6 Out of Charter 明言"无 INV-SEC 适用"）
 - [ ] §0.5 Critical Assumptions Summary（charter 可填 N/A 但需说明原因）
 - [ ] `cross-cutting.md §2.1` Approval.Status = Acknowledged
+- [ ] `forbidden-actions.md §Phase 1 校验` Format Validation Gate 通过
+- [ ] `forbidden-actions.md §Phase Exit Gate` 三件套通过（Format Gate PASS + self-check [x] + _status 已更新）
 
 ## 3. Audit 自检（Phase 1.5 末尾，仅 Hybrid / Brownfield）
 
 - [ ] `templates/audit.md §1 / §2` Scope of Audit + Audit Coverage Matrix 14 面已覆盖
 - [ ] `templates/audit.md §Phase 1.5 审计硬规则` 真实数据库面已用 PostgreSQL MCP / SQLite MCP 或等价工具 readback
-- [ ] `templates/audit.md §Phase 1.5 审计硬规则` 文档 SSOT 面已深读 L1 SSOT / .github/standards / active or done specs / Project Archives / artifacts
+- [ ] `templates/audit.md §Phase 1.5 审计硬规则` 文档 SSOT 面已深读 L1 SSOT / .github/standards / active or done specs / `delivery-log.md` / artifacts
 - [ ] `templates/audit.md §Phase 1.5 审计硬规则` Audit Depth Gate = PASS_TO_REQUIREMENTS；Overall Confidence ≥ 80%；两个强证据面各 ≥ 80%；Blocking Unknowns = none 或已说明不影响 Phase 2
 - [ ] `appendix.md §A.4` DB / API / UI / FS 类 EXIST `Verified By:` 4 项 + evidence_file 首行 4 桶分类
 - [ ] `appendix.md §A.4` audit.md 未出现超 2 句原文 dump
 - [ ] §0.5 Critical Assumptions Summary
 - [ ] `cross-cutting.md §2` Decision Gate 判定（用户 Gate 批准或 AI-DRI auto-approved 留痕）
+- [ ] `forbidden-actions.md §Phase 1.5 校验` Format Validation Gate 通过（若适用）
+- [ ] `forbidden-actions.md §Phase Exit Gate` 三件套通过（Format Gate PASS + self-check [x] + _status 已更新）
 
 ## 4. Requirements 自检
 
@@ -47,6 +53,8 @@
 - [ ] `templates/requirements.md` Non-Goals 已写；未出现技术选型句
 - [ ] §0.5 Critical Assumptions Summary
 - [ ] `cross-cutting.md §2` Decision Gate 判定
+- [ ] `forbidden-actions.md §Phase 2 校验` Format Validation Gate 通过
+- [ ] `forbidden-actions.md §Phase Exit Gate` 三件套通过（Format Gate PASS + self-check [x] + _status 已更新）
 
 ## 5. Design 自检
 
@@ -68,6 +76,8 @@
 - [ ] `plan-delta-merge-protocol.md §2` DSN delta 与上游 REQ / NFR delta 一致；Replace / Deprecate 命中者有迁移、兼容窗口或清理条件
 - [ ] §0.5 Critical Assumptions Summary
 - [ ] `cross-cutting.md §2` Decision Gate 判定
+- [ ] `forbidden-actions.md §Phase 3 校验` Format Validation Gate 通过（若适用）
+- [ ] `forbidden-actions.md §Phase Exit Gate` 三件套通过（Format Gate PASS + self-check [x] + _status 已更新）
 
 ## 6. Tasks 自检
 
@@ -88,6 +98,8 @@
 - [ ] §0.5 Critical Assumptions Summary（可 N/A 但需说明原因）
 - [ ] `templates/tasks.md` Test Plan / DoD / Rollback 已写
 - [ ] `cross-cutting.md §2` Decision Gate 判定
+- [ ] `forbidden-actions.md §Phase 4 校验` Format Validation Gate 通过
+- [ ] `forbidden-actions.md §Phase Exit Gate` 三件套通过（Format Gate PASS + self-check [x] + _status 已更新）
 
 ## 7. Handoff 自检（Phase 5）
 
@@ -100,3 +112,5 @@
 - [ ] `cross-cutting.md §4.3` `severity: high` 且 `kind: spec_drift` 阻塞项已处理（不得带阻塞推进新 feature）
 - [ ] `plan-delta-merge-protocol.md §3` Merge Queue 已装配；folded_into_ssot / promoted_to_ssot_patch 未获用户批准前只保留候选，不静默改 Authoritative SSOT
 - [ ] 主 workflow §2.6 人读简报建议 `/specs-execute` 切换 + first_task ID + 风险/迁移要点提示
+- [ ] `forbidden-actions.md §Phase 5 校验` Format Validation Gate 通过
+- [ ] `forbidden-actions.md §Phase Exit Gate` 三件套通过（Format Gate PASS + self-check [x] + _status 已更新）
