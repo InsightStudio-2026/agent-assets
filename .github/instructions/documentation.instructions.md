@@ -26,6 +26,7 @@ applyTo: '**/*.md'
 | — | `docs/archives/` | 旧版历史快照（只读） |
 | — | `docs/assets/` | 元协议、产品知识库、法律文件 |
 | — | `.github/instructions/` | 工程规范 |
+| — | `.github/experience/` | 项目运行教训（由 `operational-learnings` skill 管理） |
 
 ### 1.2 命名与维护纪律
 
@@ -42,9 +43,10 @@ applyTo: '**/*.md'
 2. **Feature 合同？** → `/specs-write` → `docs/specs/active/<slug>/`
 3. **Feature 完结归档？** → `git mv` 到 `docs/specs/done/<slug>/` + 在 `docs/specs/project archives/delivery-log.md` 追加交付记录
 4. **工程规范？** → `.github/instructions/`
-5. **元规则/法律政策？** → `docs/assets/`
-6. **历史快照？** → `docs/archives/`（只读）
-7. **笔记/草稿？** → `docs/notes/` 或 `docs/idea/`
+5. **运行教训/踩坑经验？** → `.github/experience/`（由 `operational-learnings` skill 管理生命周期）
+6. **元规则/法律政策？** → `docs/assets/`
+7. **历史快照？** → `docs/archives/`（只读）
+8. **笔记/草稿？** → `docs/notes/` 或 `docs/idea/`
 
 不属于任何类别 → **不建**。
 
